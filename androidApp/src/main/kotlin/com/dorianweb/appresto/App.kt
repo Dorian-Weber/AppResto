@@ -28,6 +28,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
@@ -39,12 +40,12 @@ fun App() {
         var  showContent by remember { mutableStateOf(false) }
         Surface(
             modifier = Modifier.fillMaxWidth().statusBarsPadding().navigationBarsPadding(),
-            color = MaterialTheme.colorScheme.background
+            color = MaterialTheme.colorScheme.onBackground
         ){
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(20.dp),
+                    .padding(10.dp),
                 verticalArrangement = Arrangement.SpaceBetween
             ) {
                     HeaderSection("Le Petit Bistro", "🍽️")
@@ -58,10 +59,6 @@ fun App() {
             }
         }
     }
-
-
-
-
 }
 
 
@@ -74,11 +71,11 @@ fun HeaderSection(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape( 28.dp),
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.onSurfaceVariant
+            containerColor = MaterialTheme.colorScheme.onSurface
         )
     ) {
         Row(
-        modifier = Modifier.fillMaxWidth().padding(24.dp),
+        modifier = Modifier.fillMaxWidth().padding(10.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Center
     ) {
@@ -104,18 +101,19 @@ fun Presentation(
 Card(
     modifier = Modifier.fillMaxWidth(),
     colors = CardDefaults.cardColors(
-        containerColor = MaterialTheme.colorScheme.background)
+        containerColor = MaterialTheme.colorScheme.onBackground)
     ) {
         Row(
-                modifier = Modifier.fillMaxWidth().padding(10.dp, 5.dp),
+            modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center
         ) {
             Text(
                 text = presentation,
                 style = MaterialTheme.typography.bodyLarge,
-                fontWeight = FontWeight.Light,
-                fontStyle = FontStyle.Italic
+                fontWeight = FontWeight.SemiBold,
+                fontStyle = FontStyle.Italic,
+                color = Color.White
             )
         }
     }
@@ -133,7 +131,7 @@ fun Menu(
         containerColor = MaterialTheme.colorScheme.onSurfaceVariant)
     ) {
         Column(
-            modifier = Modifier.fillMaxWidth().padding(vertical = 20.dp),
+            modifier = Modifier.fillMaxWidth().padding(vertical = 10.dp),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
@@ -144,11 +142,12 @@ fun Menu(
             color = Color.White
         )
             Row(
-                modifier = Modifier.fillMaxWidth().padding(10.dp, 5.dp),
+                modifier = Modifier.fillMaxWidth().padding(10.dp, 20.dp),
             ) {
                 Column(
                     modifier = Modifier.fillMaxWidth().padding(horizontal = 15.dp),
-                    horizontalAlignment = Alignment.Start
+                    horizontalAlignment = Alignment.Start,
+                    verticalArrangement = Arrangement.spacedBy(10.dp)
                 ) {
                     Text(
                     text = plat1.linePlat(),
@@ -192,26 +191,26 @@ fun Info() {
             ) {
                 Text(
                 text = "Adresse : 86 rue aux arènes, 57000 Metz",
-                style = MaterialTheme.typography.labelSmall,
+                style = MaterialTheme.typography.labelLarge,
                 fontWeight = FontWeight.Bold,
                 color = Color.White
             )
             }
                 Text(
                     text = "Horaires :",
-                    style = MaterialTheme.typography.labelSmall,
+                    style = MaterialTheme.typography.labelLarge,
                     fontWeight = FontWeight.Bold,
                     color = Color.White
                 )
                 Text(
                     text = "du lundi au samedi,",
-                    style = MaterialTheme.typography.labelSmall,
+                    style = MaterialTheme.typography.labelLarge,
                     fontWeight = FontWeight.Bold,
                     color = Color.White
                 )
                 Text(
                     text = "de 12h à 14h et de 19h à 22h",
-                    style = MaterialTheme.typography.labelSmall,
+                    style = MaterialTheme.typography.labelLarge,
                     fontWeight = FontWeight.Bold,
                     color = Color.White
                 )
@@ -225,7 +224,7 @@ fun Illustration() {
     Image(
         painter = painterResource(id = R.drawable.restaurant),
         contentDescription = "Mon restaurant",
-        modifier = Modifier.fillMaxWidth().height(400.dp).padding(10.dp)
+        modifier = Modifier.fillMaxWidth().height(250.dp)
     )
 }
 
